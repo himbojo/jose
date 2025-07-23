@@ -65,6 +65,7 @@ A JWT signed using RS256 with a certificate might include this header:
   * That way you can `establish verifiable trust` in environments where the verifier cannot just `"take your word for it"`
 * You want the flexibility of PKI and key lifecycle tracking.
 * You're already in a certificate-heavy environment (e.g., banking, healthcare, enterprise auth).
+* S/MIME-like data protection
 
 ❌ Probably not needed if:
 * JWTs are used **internally**, and you're sharing static keys between services.
@@ -74,6 +75,17 @@ Excellent question — the role of **certificate revocation checking** in JWT si
 
 ---
 
+## 🔍 X.509 JWS vs JWE Differences
+|Topic|JWS|JWE|
+|-|-|-|
+|Cert belongs to|Signer (issuer)|Recipient|
+|`x5c` header used by|Verifier|Sender (optional)|
+|Revocation check default?|❌ No|❌ No|
+|Who should verify cert|Verifier|Sender|
+|Cert expiration matter?|✅ Yes|✅ Yes|
+|Common in external integrations|✅ Yes|✅ Yes|
+
+---
 ## 🔍 Does Revocation Checking Happen During JWT Verification?
 ### ❌ Generally: **No, revocation is not checked by default**
 
