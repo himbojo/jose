@@ -1,7 +1,7 @@
 import datetime
-from jwt_hs256 import encode_hs256, decode_hs256
-from jwt_rs256 import encode_rs256, decode_rs256
-from jwt_es256 import encode_es256, decode_es256
+from jws_hs256 import encode_hs256, decode_hs256
+from jws_rs256 import encode_rs256, decode_rs256
+from jws_es256 import encode_es256, decode_es256
 from cryptography.hazmat.primitives.asymmetric import rsa, ec
 
 def create_payload():
