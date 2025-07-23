@@ -2,7 +2,11 @@ from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from Crypto.Random import get_random_bytes
 import json
-from jwe_helpers import b64url_encode, b64url_decode
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Client encrypts the payload using a randomly generated CEK (content encryption key)
 # The CEK is then encrypted using the recipient's (server's) RSA public key (RSA-OAEP)

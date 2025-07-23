@@ -1,8 +1,12 @@
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature, decode_dss_signature
-from jwt_helpers import b64url_encode, b64url_decode, json_dumps
 import json
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Sign payload using EC private key (P-256 curve + SHA-256)
 # Used when compact size and compliance (FIPS, etc.) are important

@@ -3,7 +3,11 @@
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 import json
-from jwe_helpers import b64url_encode, b64url_decode
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Client encrypts payload using a shared secret derived from ECDH key exchange
 def encrypt_ecdh_es_a256gcm(payload: dict, shared_secret: bytes):

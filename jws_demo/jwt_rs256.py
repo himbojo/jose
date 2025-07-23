@@ -1,7 +1,11 @@
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes
-from jwt_helpers import b64url_encode, b64url_decode, json_dumps
 import json
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Client or token issuer signs with their private RSA key
 def encode_rs256(payload: dict, private_key) -> str:

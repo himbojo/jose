@@ -1,7 +1,11 @@
 import hmac
 import hashlib
 import json
-from jwt_helpers import b64url_encode, b64url_decode, json_dumps
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Sign a payload using a shared secret and HS256 (HMAC + SHA-256)
 # Typically used in trusted environments (e.g., microservices with shared secrets)

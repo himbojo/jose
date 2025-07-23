@@ -1,7 +1,11 @@
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 import json
-from jwe_helpers import b64url_encode, b64url_decode
+import os
+import sys
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, base_dir)
+from helpers import b64url_encode, b64url_decode, json_dumps
 
 # Symmetric encryption using direct mode ("alg": "dir") and A256GCM
 # Typically used when both client and server share the same symmetric key (e.g., internal microservices)
