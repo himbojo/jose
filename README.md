@@ -1,6 +1,6 @@
-# Is it beneficial to use X.509 Certificates in a JWS (or JWT)?
+# Is it beneficial to use X.509 Certificates in a JWT?
 
-Yes — using **X.509 certificates** for your RSA or ECC keys in a JWS (or JWT) context can provide **security, trust, and operational benefits**, especially in real-world deployments. However, the value depends heavily on **your threat model**, **who is verifying the JWTs**, and **how keys are distributed and trusted**.
+Yes — using **X.509 certificates** for your RSA or ECC keys in a JWT can provide **security, trust, and operational benefits**, especially in real-world deployments. However, the value depends heavily on **your threat model**, **who is verifying the JWTs**, and **how keys are distributed and trusted**.
 
 ## 🔐 What’s the Difference?
 
@@ -71,8 +71,6 @@ A JWT signed using RS256 with a certificate might include this header:
 * JWTs are used **internally**, and you're sharing static keys between services.
 * You control both the issuer and verifier and don’t need trust chains.
 
-Excellent question — the role of **certificate revocation checking** in JWT signature verification is nuanced. While it's **technically possible**, **in practice it is rare**, and here’s why:
-
 ---
 
 ## 🔍 X.509 JWS vs JWE Differences
@@ -85,6 +83,8 @@ Excellent question — the role of **certificate revocation checking** in JWT si
 |Cert expiration matter?|✅ Yes|✅ Yes|
 |Common in external integrations|✅ Yes|✅ Yes|
 
+* JWS (JSON Web `Signature`): For `signing → integrity and authenticity`.
+* JWE (JSON Web `Encryption`): For `encryption → confidentiality`.
 ---
 ## 🔍 Does Revocation Checking Happen During JWT Verification?
 ### ❌ Generally: **No, revocation is not checked by default**
