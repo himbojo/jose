@@ -11,6 +11,11 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
+## Install packages
+```bash
+python -m pip install pycryptodome
+```
+
 ## Freeze requirements
 ```bash
 python -m pip freeze > requirements.txt
